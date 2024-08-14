@@ -1,4 +1,4 @@
-const apiKey = '2af1edb13a77fd00b9c35e1a61bdbdd4'; 
+const apiKey = '2af1edb13a77fd00b9c35e1a61bdbdd4';
 let currentPage = 1;
 
 async function fetchMovies(page = 1) {
@@ -26,7 +26,7 @@ function displayMovies(movies) {
     movies.forEach(movie => {
         const movieItem = document.createElement('div');
         movieItem.classList.add('movie-item');
-        
+
         const posterPath = movie.poster_path ? https://image.tmdb.org/t/p/w300${movie.poster_path} : 'path/to/fallback-image.jpg';
         movieItem.innerHTML = 
             <img src="${posterPath}" alt="${movie.title}">
@@ -57,7 +57,7 @@ function updatePagination(currentPage, totalPages) {
         nextLink.href = '#';
         nextLink.innerText = 'Next';
         nextLink.addEventListener('click', () => {
-            fetchMovies(currentPage + 1);
+            fetchMovies(currentPage + 1); // Increment the page number
             currentPage++;
         });
         pagination.appendChild(nextLink);
