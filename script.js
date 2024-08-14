@@ -2,7 +2,7 @@ const apiKey = '2af1edb13a77fd00b9c35e1a61bdbdd4';
 let currentPage = 1;
 
 async function fetchMovies(page = 1) {
-    const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=${page}`;
+    const apiUrl = https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=${page};
     try {
         const response = await fetch(apiUrl);
         const data = await response.json();
@@ -10,6 +10,7 @@ async function fetchMovies(page = 1) {
         updatePagination(data.page, data.total_pages);
     } catch (error) {
         console.error('Error fetching movies:', error);
+        document.querySelector('.content-list').innerHTML = '<p>Unable to load movies. Please try again later.</p>';
     }
 }
 
@@ -26,10 +27,11 @@ function displayMovies(movies) {
         const movieItem = document.createElement('div');
         movieItem.classList.add('movie-item');
         
-        movieItem.innerHTML = `
-            <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.title}">
+        const posterPath = movie.poster_path ? https://image.tmdb.org/t/p/w300${movie.poster_path} : 'path/to/fallback-image.jpg';
+        movieItem.innerHTML = 
+            <img src="${posterPath}" alt="${movie.title}">
             <h3>${movie.title}</h3>
-        `;
+        ;
 
         movieList.appendChild(movieItem);
     });
